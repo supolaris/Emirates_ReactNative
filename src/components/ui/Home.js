@@ -69,16 +69,59 @@ const Home = () => {
         <View style={styles.toogleTouchAbleView}>
           <TouchableOpacity
             onPress={onEmiratesPressed}
-            style={styles.touchableEmirates}>
-            <Text style={styles.toogleText}>Emirates A380</Text>
+            style={[
+              styles.touchableEmirates,
+              {
+                backgroundColor:
+                  planeType == 'Emirates' ? 'white' : EmiratesColors.white,
+              },
+            ]}>
+            <Text
+              style={[
+                styles.toogleText,
+                {
+                  color:
+                    planeType == 'Emirates'
+                      ? EmiratesColors.Black
+                      : EmiratesColors.GrayText,
+                },
+              ]}>
+              Emirates A380
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={onBoeingPressed}
-            style={styles.touchableBoeing}>
-            <Text style={styles.toogleText}>Boeing 777</Text>
+            style={[
+              styles.touchableEmirates,
+              {
+                backgroundColor:
+                  planeType == 'Boeing' ? 'white' : EmiratesColors.white,
+              },
+            ]}>
+            <Text
+              style={[
+                styles.toogleText,
+                {
+                  color:
+                    planeType == 'Boeing'
+                      ? EmiratesColors.Black
+                      : EmiratesColors.GrayText,
+                },
+              ]}>
+              Boeing 777
+            </Text>
           </TouchableOpacity>
         </View>
+        {planeType == 'Emirates' ? (
+          <View>
+            <Text>Emirates</Text>
+          </View>
+        ) : (
+          <View>
+            <Text>Boeing</Text>
+          </View>
+        )}
       </View>
     </ScrollView>
   );
@@ -116,7 +159,10 @@ const styles = StyleSheet.create({
     margin: 2,
     borderRadius: 5,
     paddingVertical: 5,
-    backgroundColor: EmiratesColors.White,
+    // backgroundColor:
+    //   planeType == 'Emirates'
+    //     ? EmiratesColors.White
+    //     : EmiratesColors.PrimaryRed,
   },
   touchableBoeing: {
     flex: 1,
