@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 
 import {EmiratesColors} from '../../assets/constants/AppColors';
@@ -32,6 +33,7 @@ const More = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <StatusBar barStyle="dark-content" />
       <PrimaryHeading headingTitle="Travel Essentials" />
       <View style={styles.flatListView}>
         <FlatList
