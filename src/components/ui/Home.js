@@ -8,6 +8,7 @@ import {
   Dimensions,
   ScrollView,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 
 import {EmiratesColors} from '../../assets/constants/AppColors';
@@ -47,83 +48,86 @@ const Home = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
       <View style={{paddingHorizontal: 0}}>
         <PrimaryHeader headerTitle="Welcome Suleman" />
       </View>
 
-      <View style={styles.featureCardView}>
-        <PrimaryHeading headingTitle="The Emirates Experience" />
-        <FeatureCard
-          image={require('../../assets/images/fruits.jpg')}
-          title="Dining"
-        />
-        <FeatureCard
-          image={require('../../assets/images/perosnOnPlane.jpg')}
-          title="Inflight entertainment"
-        />
-      </View>
-      <View style={styles.planeTypesView}>
-        <PrimaryHeading headingTitle="Explore our fleet in 3d" />
-
-        <View style={styles.toogleTouchAbleView}>
-          <TouchableOpacity
-            onPress={onEmiratesPressed}
-            style={[
-              styles.touchableEmirates,
-              {
-                backgroundColor:
-                  planeType == 'Emirates' ? 'white' : EmiratesColors.white,
-              },
-            ]}>
-            <Text
-              style={[
-                styles.toogleText,
-                {
-                  color:
-                    planeType == 'Emirates'
-                      ? EmiratesColors.Black
-                      : EmiratesColors.GrayText,
-                },
-              ]}>
-              Emirates A380
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={onBoeingPressed}
-            style={[
-              styles.touchableEmirates,
-              {
-                backgroundColor:
-                  planeType == 'Boeing' ? 'white' : EmiratesColors.white,
-              },
-            ]}>
-            <Text
-              style={[
-                styles.toogleText,
-                {
-                  color:
-                    planeType == 'Boeing'
-                      ? EmiratesColors.Black
-                      : EmiratesColors.GrayText,
-                },
-              ]}>
-              Boeing 777
-            </Text>
-          </TouchableOpacity>
+      <ScrollView style={styles.container}>
+        <View style={styles.featureCardView}>
+          <PrimaryHeading headingTitle="The Emirates Experience" />
+          <FeatureCard
+            image={require('../../assets/images/fruits.jpg')}
+            title="Dining"
+          />
+          <FeatureCard
+            image={require('../../assets/images/perosnOnPlane.jpg')}
+            title="Inflight entertainment"
+          />
         </View>
-        {planeType == 'Emirates' ? (
-          <View>
-            <Text>Emirates</Text>
+        <View style={styles.planeTypesView}>
+          <PrimaryHeading headingTitle="Explore our fleet in 3d" />
+
+          <View style={styles.toogleTouchAbleView}>
+            <TouchableOpacity
+              onPress={onEmiratesPressed}
+              style={[
+                styles.touchableEmirates,
+                {
+                  backgroundColor:
+                    planeType == 'Emirates' ? 'white' : EmiratesColors.white,
+                },
+              ]}>
+              <Text
+                style={[
+                  styles.toogleText,
+                  {
+                    color:
+                      planeType == 'Emirates'
+                        ? EmiratesColors.Black
+                        : EmiratesColors.GrayText,
+                  },
+                ]}>
+                Emirates A380
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={onBoeingPressed}
+              style={[
+                styles.touchableEmirates,
+                {
+                  backgroundColor:
+                    planeType == 'Boeing' ? 'white' : EmiratesColors.white,
+                },
+              ]}>
+              <Text
+                style={[
+                  styles.toogleText,
+                  {
+                    color:
+                      planeType == 'Boeing'
+                        ? EmiratesColors.Black
+                        : EmiratesColors.GrayText,
+                  },
+                ]}>
+                Boeing 777
+              </Text>
+            </TouchableOpacity>
           </View>
-        ) : (
-          <View>
-            <Text>Boeing</Text>
-          </View>
-        )}
-      </View>
-    </ScrollView>
+          {planeType == 'Emirates' ? (
+            <View>
+              <Text>Emirates</Text>
+            </View>
+          ) : (
+            <View>
+              <Text>Boeing</Text>
+            </View>
+          )}
+        </View>
+      </ScrollView>
+    </>
   );
 };
 
