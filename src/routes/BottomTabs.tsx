@@ -130,6 +130,7 @@ export function BottomTabs() {
       <Tab.Screen
         options={{
           //title: 'More',
+          headerShown: false,
           headerTitleAlign: 'center',
           headerTitleStyle: {
             color: EmiratesColors.Black,

@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {EmiratesColors} from '../../assets/constants/AppColors';
 
 const FeatureCard = props => {
@@ -10,6 +16,7 @@ const FeatureCard = props => {
       </View>
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{props.title}</Text>
+        <Text style={styles.descriptionText}>{props.description}</Text>
       </View>
     </View>
   );
@@ -40,6 +47,12 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 18,
     color: EmiratesColors.Black,
+    textAlign: 'center',
+  },
+  descriptionText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
     textAlign: 'center',
   },
 });
