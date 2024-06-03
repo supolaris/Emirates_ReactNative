@@ -3,13 +3,12 @@ import {
   View,
   Text,
   StyleSheet,
-  FlatList,
-  Image,
   Dimensions,
   ScrollView,
   TouchableOpacity,
   StatusBar,
   ImageBackground,
+  Image,
 } from 'react-native';
 
 import {EmiratesColors} from '../../assets/constants/AppColors';
@@ -41,15 +40,15 @@ const Home = () => {
 
   const RenderInformationData = ({item}) => {
     return (
-      <View style={styles.renderContainer}>
-        <View style={styles.renderImageView}>
-          {/* <Image
-            style={styles.renderImage}
-            resizeMode="cover"
-            source={item.Image}
-          /> */}
-          <Text>hello world</Text>
-        </View>
+      <View style={styles.renderInformationContainer}>
+        <ImageBackground
+          source={item.Image}
+          style={[styles.renderInformationBackgroundImage]}>
+          <View style={styles.informationTextView}>
+            <Text style={styles.informationText}>{item.Title}</Text>
+          </View>
+        </ImageBackground>
+        {/* <Image style={styles.renderCarouselImage} source={item.image} /> */}
       </View>
     );
   };
@@ -80,6 +79,21 @@ const Home = () => {
       </View>
 
       <ScrollView style={styles.container}>
+        <View>
+          <PrimaryHeading headingTitle="Important information" />
+          <View>
+            <SwiperFlatList
+              data={HomeScreenInformationSwiper}
+              renderItem={RenderInformationData}
+              autoplay
+              autoplayLoop
+              showPagination
+              autoplayDelay={2}
+              pagingEnabled={true}
+              autoplayLoopKeepAnimation={true}
+            />
+          </View>
+        </View>
         <View style={styles.featureCardView}>
           <PrimaryHeading headingTitle="The Emirates Experience" />
           <FeatureCard
@@ -179,6 +193,27 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  renderInformationContainer: {},
+  renderInformationBackgroundImage: {
+    height: 200,
+    width: 350,
+    overflow: 'hidden',
+    borderRadius: 10,
+  },
+  informationTextView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  informationText: {
+    fontSize: 30,
+    color: EmiratesColors.White,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    paddingBottom: 20,
+  },
+
+  //main container
   container: {
     flex: 1,
     backgroundColor: EmiratesColors.PrimaryGray,
@@ -207,17 +242,12 @@ const styles = StyleSheet.create({
     margin: 2,
     borderRadius: 5,
     paddingVertical: 5,
-    // backgroundColor:
-    //   planeType == 'Emirates'
-    //     ? EmiratesColors.White
-    //     : EmiratesColors.PrimaryRed,
   },
   touchableBoeing: {
     flex: 1,
     margin: 2,
     borderRadius: 5,
     paddingVertical: 5,
-    // backgroundColor: 'blue',
   },
   toogleText: {
     textAlign: 'center',
