@@ -16,7 +16,6 @@ const FeatureCard = props => {
       </View>
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{props.title}</Text>
-        <Text style={styles.descriptionText}>{props.description}</Text>
       </View>
     </View>
   );

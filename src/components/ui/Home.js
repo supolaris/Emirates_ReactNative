@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  ImageBackground,
 } from 'react-native';
 
 import {EmiratesColors} from '../../assets/constants/AppColors';
@@ -16,6 +17,12 @@ import {EmiratesColors} from '../../assets/constants/AppColors';
 import PrimaryHeader from '../common/headers/PrimaryHeader';
 import PrimaryHeading from '../common/PrimaryHeading';
 import FeatureCard from '../common/FeatureCard';
+
+import SwiperFlatList from 'react-native-swiper-flatlist';
+
+//import Carousel from 'react-native-snap-carousel';
+import {HomeEmiratesCarouselData} from '../../assets/data/HomeCarouselData';
+import {HomeBoeingCarouselData} from '../../assets/data/HomeCarouselData';
 
 import {HomeScreenInformationSwiper} from '../../assets/data/HomeScreenInformationSwiper';
 
@@ -47,9 +54,27 @@ const Home = () => {
     );
   };
 
+  const renderHomeCarousel = ({item}) => {
+    return (
+      <View style={styles.renderCarouselContainer}>
+        <ImageBackground
+          source={item.image}
+          style={styles.renderCarouselBackgroundImage}>
+          <View style={styles.renderCarouselTextView}>
+            <Text style={styles.renderCarouselText}>{item.title}</Text>
+          </View>
+        </ImageBackground>
+        {/* <Image style={styles.renderCarouselImage} source={item.image} /> */}
+      </View>
+    );
+  };
+
   return (
-    <>
-      <StatusBar barStyle="dark-content" backgroundColor="white" />
+    <View style={{flex: 1}}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={EmiratesColors.White}
+      />
       <View style={{paddingHorizontal: 0}}>
         <PrimaryHeader headerTitle="Welcome Suleman" />
       </View>
@@ -117,17 +142,37 @@ const Home = () => {
             </TouchableOpacity>
           </View>
           {planeType == 'Emirates' ? (
-            <View>
-              <Text>Emirates</Text>
+            <View style={{paddingTop: 20, paddingBottom: 30}}>
+              <SwiperFlatList
+                data={HomeEmiratesCarouselData}
+                renderItem={renderHomeCarousel}
+                autoplay
+                autoplayDelay={3}
+                autoplayLoop
+                index={1}
+                //showPagination
+                autoplayLoopKeepAnimation={true}
+                disableGesture={false}
+              />
             </View>
           ) : (
-            <View>
-              <Text>Boeing</Text>
+            <View style={{paddingTop: 20, paddingBottom: 30}}>
+              <SwiperFlatList
+                data={HomeBoeingCarouselData}
+                renderItem={renderHomeCarousel}
+                autoplay
+                autoplayDelay={3}
+                autoplayLoop
+                index={1}
+                //showPagination
+                autoplayLoopKeepAnimation={true}
+                disableGesture={false}
+              />
             </View>
           )}
         </View>
       </ScrollView>
-    </>
+    </View>
   );
 };
 
@@ -136,7 +181,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     backgroundColor: EmiratesColors.PrimaryGray,
   },
   infromationView: {
@@ -179,5 +223,28 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     color: EmiratesColors.Black,
+  },
+
+  // Home Carousel
+  renderCarouselContainer: {
+    marginHorizontal: 30,
+  },
+  renderCarouselBackgroundImage: {
+    height: 400,
+    width: 300,
+    overflow: 'hidden',
+    borderRadius: 10,
+  },
+  renderCarouselTextView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  renderCarouselText: {
+    fontSize: 30,
+    color: EmiratesColors.White,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    paddingBottom: 20,
   },
 });
