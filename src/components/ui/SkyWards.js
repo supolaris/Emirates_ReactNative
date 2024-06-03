@@ -1,20 +1,12 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  StatusBar,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StyleSheet, Image, StatusBar} from 'react-native';
 
 import {EmiratesColors} from '../../assets/constants/AppColors';
 
-import LinearGradient from 'react-native-linear-gradient';
 import PrimaryButton from '../common/buttons/PrimaryButton';
 import SecondaryButton from '../common/buttons/SecondaryButton';
-import TertiaryHeading from '../common/TertiaryHeading';
 import TertiaryButton from '../common/buttons/TertiaryButton';
+import LinearGradient from 'react-native-linear-gradient';
 
 const SkyWards = () => {
   return (
@@ -60,6 +52,7 @@ const styles = StyleSheet.create({
   },
   buttonsView: {
     flex: 1,
+    marginTop: 15,
     backgroundColor: 'white',
     paddingHorizontal: 10,
   },
