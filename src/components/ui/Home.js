@@ -74,7 +74,7 @@ const Home = () => {
         barStyle="dark-content"
         backgroundColor={EmiratesColors.White}
       />
-      <View style={{paddingHorizontal: 0}}>
+      <View style={{paddingHorizontal: 0, paddingTop: 20}}>
         <PrimaryHeader headerTitle="Welcome Suleman" />
       </View>
 

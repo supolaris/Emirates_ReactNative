@@ -61,6 +61,7 @@ export function BottomTabs() {
       />
       <Tab.Screen
         options={{
+          headerShown: false,
           title: 'Search flights',
           headerTitleAlign: 'center',
           headerTitleStyle: {
