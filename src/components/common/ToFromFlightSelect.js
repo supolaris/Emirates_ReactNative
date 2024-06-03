@@ -6,7 +6,7 @@ import {EmiratesColors} from '../../assets/constants/AppColors';
 import ArrowIcons from 'react-native-vector-icons/Ionicons';
 import PrimaryHeading from './PrimaryHeading';
 
-const ToFromFlightSelect = () => {
+const ToFromFlightSelect = props => {
   return (
     <View style={styles.container}>
       <View style={styles.fromToView}>
@@ -36,13 +36,13 @@ const ToFromFlightSelect = () => {
       </Pressable>
 
       <Pressable style={styles.travelDatesView}>
-        <PrimaryHeading headingTitle="Travel Dates" />
-        <Text style={styles.selectDatesText}>Select Dates</Text>
+        <PrimaryHeading headingTitle={props.selectDateHeadingText}/>
+        <Text style={styles.selectDatesText}>{props.selectDateText}</Text>
       </Pressable>
 
       <Pressable style={styles.classView}>
-        <PrimaryHeading headingTitle="Passengers and cabin class" />
-        <Text style={styles.classText}>4 Passengers in first class</Text>
+        <PrimaryHeading headingTitle={props.block2Heading} />
+        <Text style={styles.classText}>{props.block2HeadingText}</Text>
       </Pressable>
     </View>
   );
