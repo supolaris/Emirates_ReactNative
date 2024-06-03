@@ -6,7 +6,6 @@ import {EmiratesColors} from '../../assets/constants/AppColors';
 import PrimaryButton from '../common/buttons/PrimaryButton';
 import SecondaryButton from '../common/buttons/SecondaryButton';
 import TertiaryButton from '../common/buttons/TertiaryButton';
-import LinearGradient from 'react-native-linear-gradient';
 
 const SkyWards = () => {
   return (

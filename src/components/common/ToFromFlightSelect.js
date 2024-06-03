@@ -35,8 +35,8 @@ const ToFromFlightSelect = props => {
         />
       </Pressable>
 
-      <Pressable style={styles.travelDatesView}>
-        <PrimaryHeading headingTitle={props.selectDateHeadingText}/>
+      <Pressable onPress={props.onPress} style={styles.travelDatesView}>
+        <PrimaryHeading headingTitle={props.selectDateHeadingText} />
         <Text style={styles.selectDatesText}>{props.selectDateText}</Text>
       </Pressable>
 

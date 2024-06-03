@@ -5,14 +5,15 @@ import {EmiratesColors} from '../../assets/constants/AppColors';
 
 import ToFromFlightSelect from '../common/ToFromFlightSelect';
 
-const Return = () => {
+const Return = props => {
   return (
     <View style={styles.container}>
-      <ToFromFlightSelect 
-      selectDateHeadingText = "Travel Dates"
-      selectDateText = "Select Dates"
-      block2Heading="Passengers and cabin class"
-      block2HeadingText="4 Passengers in Firtst Class"
+      <ToFromFlightSelect
+        onPress={props.onPress}
+        selectDateHeadingText="Travel Dates"
+        selectDateText="Select Dates"
+        block2Heading="Passengers and cabin class"
+        block2HeadingText="4 Passengers in Firtst Class"
       />
     </View>
   );

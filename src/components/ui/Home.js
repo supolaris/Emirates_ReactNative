@@ -74,7 +74,7 @@ const Home = () => {
         barStyle="dark-content"
         backgroundColor={EmiratesColors.White}
       />
-      <View style={{paddingHorizontal: 0, paddingTop: 20}}>
+      <View style={{paddingHorizontal: 0, paddingBottom: 5}}>
         <PrimaryHeader headerTitle="Welcome Suleman" />
       </View>
 
@@ -83,15 +83,15 @@ const Home = () => {
           <View style={{paddingVertical: 10, paddingLeft: 10}}>
             <PrimaryHeading headingTitle="Important information" />
           </View>
-
-          <View>
+          <View style={{marginHorizontal: 10}}>
             <SwiperFlatList
               data={HomeScreenInformationSwiper}
               renderItem={RenderInformationData}
-              snapToInterval={width}
               autoplay
               autoplayLoop
               showPagination
+              snapToInterval={width}
+              disableGesture={true}
               autoplayDelay={2}
               pagingEnabled={true}
               autoplayLoopKeepAnimation={true}
@@ -198,7 +198,7 @@ export default Home;
 
 const styles = StyleSheet.create({
   renderInformationContainer: {
-    marginHorizontal: 10,
+    width: width,
   },
   renderInformationBackgroundImage: {
     height: 200,
