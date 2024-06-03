@@ -19,7 +19,6 @@ import FeatureCard from '../common/FeatureCard';
 
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
-//import Carousel from 'react-native-snap-carousel';
 import {HomeEmiratesCarouselData} from '../../assets/data/HomeCarouselData';
 import {HomeBoeingCarouselData} from '../../assets/data/HomeCarouselData';
 
@@ -41,14 +40,16 @@ const Home = () => {
   const RenderInformationData = ({item}) => {
     return (
       <View style={styles.renderInformationContainer}>
-        <ImageBackground
+        <Image
           source={item.Image}
-          style={[styles.renderInformationBackgroundImage]}>
-          <View style={styles.informationTextView}>
-            <Text style={styles.informationText}>{item.Title}</Text>
-          </View>
-        </ImageBackground>
-        {/* <Image style={styles.renderCarouselImage} source={item.image} /> */}
+          style={[styles.renderInformationBackgroundImage]}
+        />
+        <View style={styles.informationTextView}>
+          <Text style={styles.informationTitleText}>{item.Title}</Text>
+          <Text style={styles.informationDescriptionText}>
+            {item.Description}
+          </Text>
+        </View>
       </View>
     );
   };
@@ -63,7 +64,6 @@ const Home = () => {
             <Text style={styles.renderCarouselText}>{item.title}</Text>
           </View>
         </ImageBackground>
-        {/* <Image style={styles.renderCarouselImage} source={item.image} /> */}
       </View>
     );
   };
@@ -80,17 +80,22 @@ const Home = () => {
 
       <ScrollView style={styles.container}>
         <View>
-          <PrimaryHeading headingTitle="Important information" />
+          <View style={{paddingVertical: 10, paddingLeft: 10}}>
+            <PrimaryHeading headingTitle="Important information" />
+          </View>
+
           <View>
             <SwiperFlatList
               data={HomeScreenInformationSwiper}
               renderItem={RenderInformationData}
+              snapToInterval={width}
               autoplay
               autoplayLoop
               showPagination
               autoplayDelay={2}
               pagingEnabled={true}
               autoplayLoopKeepAnimation={true}
+              paginationActiveColor="black"
             />
           </View>
         </View>
@@ -164,7 +169,6 @@ const Home = () => {
                 autoplayDelay={3}
                 autoplayLoop
                 index={1}
-                //showPagination
                 autoplayLoopKeepAnimation={true}
                 disableGesture={false}
               />
@@ -193,24 +197,34 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  renderInformationContainer: {},
+  renderInformationContainer: {
+    marginHorizontal: 10,
+  },
   renderInformationBackgroundImage: {
     height: 200,
-    width: 350,
+    width: width,
     overflow: 'hidden',
-    borderRadius: 10,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
   },
   informationTextView: {
     flex: 1,
     justifyContent: 'flex-end',
+    borderLeftWidth: 8,
+    borderLeftColor: EmiratesColors.PrimaryRed,
+    marginBottom: 30,
+    paddingLeft: 10,
+    paddingVertical: 10,
   },
-  informationText: {
-    fontSize: 30,
-    color: EmiratesColors.White,
+  informationTitleText: {
+    fontSize: 20,
+    color: EmiratesColors.Black,
     fontWeight: 'bold',
-    textAlign: 'center',
     justifyContent: 'center',
-    paddingBottom: 20,
+  },
+  informationDescriptionText: {
+    fontSize: 18,
+    color: EmiratesColors.Black,
   },
 
   //main container
