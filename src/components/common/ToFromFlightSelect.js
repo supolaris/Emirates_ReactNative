@@ -255,9 +255,7 @@ const ToFromFlightSelect = props => {
               <View
                 style={{
                   justifyContent: 'flex-end',
-                  // backgroundColor: 'red',
                   paddingTop: 30,
-                  // padding: 20,
                 }}>
                 <PrimaryButton
                   onPress={() => setPassengerModalVisible(false)}

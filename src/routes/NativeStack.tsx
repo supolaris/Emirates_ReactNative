@@ -7,6 +7,7 @@ import BookScreen from '../screens/BookScreen';
 import MyTripsScreen from '../screens/MyTripsScreen';
 import SkywardsScreen from '../screens/SkywardsScreen';
 import MoreScreen from '../screens/MoreScreen';
+import LoginForm from '../components/ui/LoginForm';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export function NativeStack() {
         <Stack.Screen name="Book_Screen" component={BookScreen} />
         <Stack.Screen name="MyTrips_Screen" component={MyTripsScreen} />
         <Stack.Screen name="Skywards_Screen" component={SkywardsScreen} />
+        <Stack.Screen name="LoginForm" component={LoginForm} />
         <Stack.Screen name="More_Screen" component={MoreScreen} />
       </Stack.Navigator>
     </NavigationContainer>

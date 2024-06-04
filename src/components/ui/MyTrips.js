@@ -64,7 +64,10 @@ const styles = StyleSheet.create({
     opacity: 1,
   },
   buttonsView: {
-    flex: 1,
+    borderWidth: 1,
+
+    justifyContent: 'flex-end',
+    flex: 0.7,
     paddingTop: 20,
     backgroundColor: 'white',
     paddingHorizontal: 10,

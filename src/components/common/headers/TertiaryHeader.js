@@ -3,41 +3,39 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {EmiratesColors} from '../../../assets/constants/AppColors';
 
-import FlightScreenIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import CrossIcon from 'react-native-vector-icons/Feather';
 
-import TertiaryHeader from './TertiaryHeader';
-
-const SecondaryHeader = props => {
+const TertiaryHeader = props => {
   return (
     <View style={styles.container}>
-      <View style={{flex: 1}}></View>
-      <View style={{flex: 2}}>
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <TouchableOpacity style={styles.iconTouchable} onPress={props.onPress}>
+          <CrossIcon
+            onPress={props.onCrossIconPress}
+            style={{paddingLeft: 20}}
+            name="x"
+            size={22}
+            color={EmiratesColors.PrimaryRed}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={{flex: 3}}>
         <Text style={styles.screenTitleText}>{props.screenTitle}</Text>
       </View>
       <View
         style={{
           flex: 1,
-          alignItems: 'flex-end',
-          justifyContent: 'center',
-        }}>
-        <TouchableOpacity style={styles.iconTouchable} onPress={props.onPress}>
-          <FlightScreenIcon
-            style={{paddingRight: 20}}
-            name="dots-horizontal"
-            size={25}
-            color={EmiratesColors.PrimaryRed}
-          />
-        </TouchableOpacity>
-      </View>
+        }}></View>
     </View>
   );
 };
 
-export default SecondaryHeader;
+export default TertiaryHeader;
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 30,
+    paddingTop: 10,
+    paddingBottom: 15,
     backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'space-between',

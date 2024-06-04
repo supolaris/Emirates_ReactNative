@@ -7,11 +7,18 @@ import PrimaryButton from '../common/buttons/PrimaryButton';
 import SecondaryButton from '../common/buttons/SecondaryButton';
 import TertiaryButton from '../common/buttons/TertiaryButton';
 
+import {useNavigation} from '@react-navigation/native';
+
 const SkyWards = () => {
+  const navigation = useNavigation();
+
+  const joinSkywards = () => {
+    navigation.navigate('LoginForm');
+  };
   return (
     <View style={styles.container}>
       <StatusBar
-        translucent
+        //translucent
         backgroundColor="transparent"
         barStyle="light-content"
       />
@@ -27,7 +34,7 @@ const SkyWards = () => {
         <PrimaryButton titleText="Login" />
 
         <View style={{paddingTop: 15, paddingBottom: 20}}>
-          <SecondaryButton titleText="Join Skywards" />
+          <SecondaryButton onPress={joinSkywards} titleText="Join Skywards" />
         </View>
         <TertiaryButton titleText="Why Join Skywards?" />
       </View>

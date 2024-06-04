@@ -7,6 +7,7 @@ import {EmiratesColors} from '../../assets/constants/AppColors';
 
 import ModalRowText from '../common/ModalRowText';
 import SecondaryHeader from '../common/headers/SecondaryHeader';
+import PrimaryButton from '../common/buttons/PrimaryButton';
 
 const Book = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -46,7 +47,7 @@ const Book = () => {
       <BookTopTabs />
 
       <View style={styles.buttonView}>
-        <QuaternaryButton titleText="Search" />
+        <PrimaryButton titleText="Search" />
       </View>
     </View>
   );

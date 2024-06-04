@@ -9,6 +9,7 @@ import {
   StatusBar,
   ImageBackground,
   Image,
+  FlatList,
 } from 'react-native';
 
 import {EmiratesColors} from '../../assets/constants/AppColors';
@@ -22,7 +23,10 @@ import SwiperFlatList from 'react-native-swiper-flatlist';
 import {HomeEmiratesCarouselData} from '../../assets/data/HomeCarouselData';
 import {HomeBoeingCarouselData} from '../../assets/data/HomeCarouselData';
 
-import {HomeScreenInformationSwiper} from '../../assets/data/HomeScreenInformationSwiper';
+import {
+  HomeScreenDestinationFlatListData,
+  HomeScreenInformationSwiper,
+} from '../../assets/data/HomeScreenInformationSwiper';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -54,9 +58,57 @@ const Home = () => {
     );
   };
 
+  const renderDestination = ({item}) => {
+    return (
+      <View style={{marginHorizontal: 10}}>
+        <Image
+          style={{
+            height: 100,
+            width: width - 25,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+          }}
+          source={item.Image}
+        />
+        <View
+          style={{
+            backgroundColor: 'white',
+            paddingLeft: 10,
+            paddingVertical: 10,
+            borderBottomRightRadius: 10,
+            borderBottomLeftRadius: 10,
+          }}>
+          <Text style={{fontSize: 20, color: EmiratesColors.Black}}>
+            {item.CountryName}
+          </Text>
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: '500',
+              color: EmiratesColors.OrignalBlack,
+            }}>
+            {item.Cityname}
+          </Text>
+          <Text
+            style={{
+              fontSize: 18,
+              color: EmiratesColors.Black,
+              fontWeight: '400',
+            }}>
+            {item.PurchasedInfro}
+          </Text>
+          <Text style={{fontSize: 18, color: 'green'}}>
+            Economy from{' '}
+            <Text style={{fontWeight: 'bold'}}>{item.Economy}</Text>
+          </Text>
+        </View>
+      </View>
+    );
+  };
+
   const renderHomeCarousel = ({item}) => {
     return (
-      <View style={styles.renderCarouselContainer}>
+      <View style={[styles.renderCarouselContainer, {paddingHorizontal: 10}]}>
         <ImageBackground
           source={item.image}
           style={styles.renderCarouselBackgroundImage}>
@@ -98,6 +150,31 @@ const Home = () => {
               paginationActiveColor="black"
             />
           </View>
+        </View>
+
+        <View style={{paddingVertical: 10}}>
+          <View style={{paddingLeft: 13}}>
+            <PrimaryHeading headingTitle="Featured fares for you" />
+            <View style={{}}>
+              <Text
+                style={{
+                  paddingVertical: 10,
+                  fontSize: 18,
+                  fontWeight: '500',
+                  color: EmiratesColors.OrignalBlack,
+                }}>
+                Destination From
+              </Text>
+            </View>
+          </View>
+
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={HomeScreenDestinationFlatListData}
+            renderItem={renderDestination}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </View>
         <View style={styles.featureCardView}>
           <PrimaryHeading headingTitle="The Emirates Experience" />
@@ -174,7 +251,8 @@ const Home = () => {
               />
             </View>
           ) : (
-            <View style={{paddingTop: 20, paddingBottom: 30}}>
+            <View
+              style={{paddingTop: 20, paddingBottom: 30, alignItems: 'center'}}>
               <SwiperFlatList
                 data={HomeBoeingCarouselData}
                 renderItem={renderHomeCarousel}
@@ -182,7 +260,6 @@ const Home = () => {
                 autoplayDelay={3}
                 autoplayLoop
                 index={1}
-                //showPagination
                 autoplayLoopKeepAnimation={true}
                 disableGesture={false}
               />
@@ -265,17 +342,17 @@ const styles = StyleSheet.create({
   },
   toogleText: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 18,
     color: EmiratesColors.Black,
   },
 
   // Home Carousel
   renderCarouselContainer: {
-    marginHorizontal: 30,
+    // marginHorizontal: 30,
   },
   renderCarouselBackgroundImage: {
     height: 400,
-    width: 300,
+    width: width - 50,
     overflow: 'hidden',
     borderRadius: 10,
   },
