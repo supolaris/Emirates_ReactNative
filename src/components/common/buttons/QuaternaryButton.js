@@ -6,7 +6,7 @@ import {EmiratesColors} from '../../../assets/constants/AppColors';
 const QuaternaryButton = props => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.touchable}>
+      <TouchableOpacity onPress={props.onPress} style={styles.touchable}>
         <Text style={styles.touchableText}>{props.titleText}</Text>
       </TouchableOpacity>
     </View>

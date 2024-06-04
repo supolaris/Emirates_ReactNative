@@ -17,7 +17,7 @@ const PrimaryTextInput = props => {
           <StarIcon
             style={styles.icon}
             name="star"
-            size={20}
+            size={12}
             color={EmiratesColors.PrimaryRed}
           />
         </View>

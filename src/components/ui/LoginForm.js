@@ -61,6 +61,10 @@ const LoginForm = () => {
     setEnableDateView(!enableDateView);
   };
 
+  const onConfirmLoginPressed = () => {
+    console.log('hello world');
+  };
+
   const renderTitle = ({item}) => {
     return (
       <TouchableOpacity
@@ -192,7 +196,10 @@ const LoginForm = () => {
 
           {/* button View */}
           <View style={styles.buttonView}>
-            <QuaternaryButton titleText="Join now" />
+            <QuaternaryButton
+              onPress={onConfirmLoginPressed}
+              titleText="Join now"
+            />
           </View>
         </View>
       </ScrollView>
