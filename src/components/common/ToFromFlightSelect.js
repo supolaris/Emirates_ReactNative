@@ -56,22 +56,26 @@ const ToFromFlightSelect = props => {
               <View style={styles.departReturnMainView}>
                 <View style={styles.departingView}>
                   <Text style={styles.departReturnText}>Departing</Text>
-                  <Text style={styles.selectDateText}>Select date</Text>
+                  <Text style={styles.selectDateText}>{selectedData}</Text>
                 </View>
                 <View style={styles.returningView}>
                   <Text style={styles.departReturnText}>Returning</Text>
-                  <Text style={styles.selectDateText}>Select date</Text>
+                  <Text style={styles.selectDateText}>{selectedData}</Text>
                 </View>
               </View>
             </View>
 
             <View style={styles.calanderView}>
               <CalendarList
+                markedDates={{
+                  [selectedData]: {
+                    selected: true,
+                  },
+                }}
                 pastScrollRange={0}
                 futureScrollRange={12}
                 onDayPress={day => {
                   setSelectedDate(day.dateString);
-                  setDateModalVisible(!dateModalVisible);
                 }}
               />
             </View>
@@ -164,7 +168,7 @@ const styles = StyleSheet.create({
   },
   selectDateText: {
     fontSize: 16,
-    color: EmiratesColors.Black,
+    color: EmiratesColors.PrimaryRed,
     paddingVertical: 10,
   },
 
