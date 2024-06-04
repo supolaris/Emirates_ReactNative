@@ -6,6 +6,7 @@ import {
   Pressable,
   Modal,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 
 import {EmiratesColors} from '../../assets/constants/AppColors';
@@ -16,19 +17,261 @@ import PrimaryHeading from './PrimaryHeading';
 import {CalendarList} from 'react-native-calendars';
 
 import CrossIcon from 'react-native-vector-icons/Feather';
+import PlusIcon from 'react-native-vector-icons/AntDesign';
+import MinusIcon from 'react-native-vector-icons/AntDesign';
+import CircleIcon from 'react-native-vector-icons/FontAwesome';
+import SelectedCircleIcon from 'react-native-vector-icons/FontAwesome';
+
+import QuinaryHeading from './QuinaryHeading';
+import QuaternaryHeading from './QuaternaryHeading';
+import {CabinClassData} from '../../assets/data/CabinClassData';
+import PrimaryButton from './buttons/PrimaryButton';
+import SecondaryButton from './buttons/SecondaryButton';
+import TertiaryButton from './buttons/TertiaryButton';
 
 const ToFromFlightSelect = props => {
   const [dateModalVisible, setDateModalVisible] = useState(false);
   const [selectedData, setSelectedDate] = useState('');
 
+  const [totalPerson, setTotalPerson] = useState(0);
+  const [adultCounter, setAdultCounter] = useState(0);
+  const [childrenCounter, setChildrenCounter] = useState(0);
+  const [infantCounter, setInfantCounter] = useState(0);
+
+  const [selectedCabinClass, setSelectCabinClass] = useState('Economy Class');
+
+  const [passengerModalVisible, setPassengerModalVisible] = useState(false);
+
   const onDateModalHandle = () => {
     setDateModalVisible(!dateModalVisible);
   };
 
+  //counter useStates
+  const onAdultDecrease = () => {
+    if (adultCounter == 0) {
+      return adultCounter;
+    } else {
+      setAdultCounter(adultCounter - 1);
+    }
+  };
+
+  const onAdultIncrease = () => {
+    if (adultCounter == 8) {
+      return adultCounter;
+    } else {
+      setAdultCounter(adultCounter + 1);
+    }
+  };
+
+  const onChildrenDecrease = () => {
+    if (childrenCounter == 0) {
+      return childrenCounter;
+    } else {
+      setChildrenCounter(childrenCounter - 1);
+    }
+  };
+
+  const onChildrenIncrease = () => {
+    if (childrenCounter == 8) {
+      return childrenCounter;
+    } else {
+      setChildrenCounter(childrenCounter + 1);
+    }
+  };
+
+  const onInfantDecrease = () => {
+    if (infantCounter == 0) {
+      return infantCounter;
+    } else {
+      setInfantCounter(infantCounter - 1);
+    }
+  };
+
+  const onInfantIncrease = () => {
+    if (infantCounter == 8) {
+      return infantCounter;
+    } else {
+      setInfantCounter(infantCounter + 1);
+    }
+  };
+
+  const renderCabinClass = ({item}) => {
+    return (
+      <Pressable
+        onPress={() => setSelectCabinClass(item.ClassType)}
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingVertical: 5,
+        }}>
+        {selectedCabinClass == item.ClassType ? (
+          <CircleIcon
+            style={{paddingRight: 15}}
+            name="dot-circle-o"
+            size={25}
+            color={EmiratesColors.PrimaryRed}
+          />
+        ) : (
+          <CircleIcon
+            style={{paddingRight: 15}}
+            name="circle-o"
+            size={25}
+            color={EmiratesColors.GrayText}
+          />
+        )}
+
+        <QuaternaryHeading headingTitle={item.ClassType} />
+      </Pressable>
+    );
+  };
+
   return (
     <View style={styles.container}>
+      {/* Passengers and class Modal */}
+      <Modal
+        visible={passengerModalVisible}
+        onRequestClose={() => setPassengerModalVisible(false)}>
+        <View style={styles.dateModalOuterView}>
+          <View
+            style={[
+              styles.dateModalInnerView,
+              {backgroundColor: 'white', paddingHorizontal: 15},
+            ]}>
+            <View style={styles.headingView}>
+              <Text style={styles.headingText}>Passengers and cabin class</Text>
+            </View>
+            <View style={styles.primaryHeadingView}>
+              <PrimaryHeading headingTitle="Passengers" />
+            </View>
+
+            <View style={{borderBottomWidth: 0.5, paddingBottom: 5}}>
+              {/* ButotnCounter 1 */}
+              <View style={styles.titleButtonCounterView}>
+                <View style={styles.titleView}>
+                  <QuaternaryHeading headingTitle="Adults" />
+                  <QuinaryHeading headingTitle="Age 12+" />
+                </View>
+                <View style={styles.counterView}>
+                  <MinusIcon
+                    onPress={onAdultDecrease}
+                    name="minuscircleo"
+                    size={30}
+                    color={
+                      adultCounter == 0
+                        ? EmiratesColors.GrayText
+                        : EmiratesColors.OrignalBlack
+                    }
+                  />
+                  <Text style={styles.counterText}>{adultCounter}</Text>
+                  <PlusIcon
+                    onPress={onAdultIncrease}
+                    name="pluscircleo"
+                    size={30}
+                    color={
+                      adultCounter == 8
+                        ? EmiratesColors.GrayText
+                        : EmiratesColors.OrignalBlack
+                    }
+                  />
+                </View>
+              </View>
+
+              {/* ButotnCounter 2 */}
+              <View style={styles.titleButtonCounterView}>
+                <View style={styles.titleView}>
+                  <QuaternaryHeading headingTitle="Children" />
+                  <QuinaryHeading headingTitle="Age 2-11" />
+                </View>
+                <View style={styles.counterView}>
+                  <MinusIcon
+                    onPress={onChildrenDecrease}
+                    name="minuscircleo"
+                    size={30}
+                    color={
+                      childrenCounter == 0
+                        ? EmiratesColors.GrayText
+                        : EmiratesColors.OrignalBlack
+                    }
+                  />
+                  <Text style={styles.counterText}>{childrenCounter}</Text>
+                  <PlusIcon
+                    onPress={onChildrenIncrease}
+                    name="pluscircleo"
+                    size={30}
+                    color={
+                      childrenCounter == 8
+                        ? EmiratesColors.GrayText
+                        : EmiratesColors.OrignalBlack
+                    }
+                  />
+                </View>
+              </View>
+
+              {/* ButotnCounter 3 */}
+              <View style={styles.titleButtonCounterView}>
+                <View style={styles.titleView}>
+                  <QuaternaryHeading headingTitle="Infant" />
+                  <QuinaryHeading headingTitle="Age under 2, on lap" />
+                </View>
+                <View style={styles.counterView}>
+                  <MinusIcon
+                    onPress={onInfantDecrease}
+                    name="minuscircleo"
+                    size={30}
+                    color={
+                      infantCounter == 0
+                        ? EmiratesColors.GrayText
+                        : EmiratesColors.OrignalBlack
+                    }
+                  />
+                  <Text style={styles.counterText}>{infantCounter}</Text>
+                  <PlusIcon
+                    onPress={onInfantIncrease}
+                    name="pluscircleo"
+                    size={30}
+                    color={
+                      infantCounter == 8
+                        ? EmiratesColors.GrayText
+                        : EmiratesColors.OrignalBlack
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.planeTypeView}>
+              <View style={styles.headingText}>
+                <PrimaryHeading headingTitle="Cabin class" />
+              </View>
+
+              <View>
+                <FlatList
+                  data={CabinClassData}
+                  renderItem={renderCabinClass}
+                  keyExtractor={(item, index) => index.toString()}
+                />
+              </View>
+
+              <View
+                style={{
+                  justifyContent: 'flex-end',
+                  // backgroundColor: 'red',
+                  paddingTop: 30,
+                  // padding: 20,
+                }}>
+                <PrimaryButton
+                  onPress={() => setPassengerModalVisible(false)}
+                  titleText="Confirm"
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
       {/* Date Modal */}
-      <Modal visible={dateModalVisible}>
+      <Modal
+        visible={dateModalVisible}
+        onRequestClose={() => setDateModalVisible(false)}>
         <View style={styles.dateModalOuterView}>
           <View style={styles.dateModalInnerView}>
             <View style={styles.headingView}>
@@ -114,7 +357,9 @@ const ToFromFlightSelect = props => {
         <Text style={styles.selectDatesText}>{props.selectDateText}</Text>
       </Pressable>
 
-      <Pressable style={styles.classView}>
+      <Pressable
+        onPress={() => setPassengerModalVisible(!passengerModalVisible)}
+        style={styles.classView}>
         <PrimaryHeading headingTitle={props.block2Heading} />
         <Text style={styles.classText}>{props.block2HeadingText}</Text>
       </Pressable>
@@ -125,6 +370,28 @@ const ToFromFlightSelect = props => {
 export default ToFromFlightSelect;
 
 const styles = StyleSheet.create({
+  // Passengers Modal
+  primaryHeadingView: {
+    paddingTop: 20,
+  },
+  titleButtonCounterView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  titleView: {},
+  counterView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  counterText: {
+    fontSize: 30,
+    color: EmiratesColors.OrignalBlack,
+    paddingHorizontal: 25,
+  },
+
+  // Calendar Date Modal
   dateModalOuterView: {
     flex: 1,
     justifyContent: 'flex-end',
