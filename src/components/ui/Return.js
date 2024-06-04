@@ -1,13 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-
-import {EmiratesColors} from '../../assets/constants/AppColors';
+import {View} from 'react-native';
 
 import ToFromFlightSelect from '../common/ToFromFlightSelect';
 
 const Return = props => {
   return (
-    <View style={styles.container}>
+    <View>
       <ToFromFlightSelect
         onPress={props.onPress}
         selectDateHeadingText="Travel Dates"
@@ -20,7 +18,3 @@ const Return = props => {
 };
 
 export default Return;
-
-const styles = StyleSheet.create({
-  container: {},
-});
