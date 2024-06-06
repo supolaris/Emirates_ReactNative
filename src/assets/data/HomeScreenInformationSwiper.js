@@ -15,24 +15,24 @@ export const HomeScreenInformationSwiper = [
 
 export const HomeScreenDestinationFlatListData = [
   {
-    Image: require('../../assets/images/plane.jpg'),
+    Image: require('../../assets/images/HomeDestinations/arab.jpg'),
     CountryName: 'Saudi Arabia',
     Cityname: 'Jeddah',
     PurchasedInfro: 'Purchased by 30 Jan 24',
     Economy: 'USD 442*',
   },
   {
-    Image: require('../../assets/images/plane.jpg'),
-    CountryName: 'United Arab Emirates',
-    Cityname: 'Dubai',
-    PurchasedInfro: 'Purchased by 30 Jan 24',
-    Economy: 'USD 444*',
-  },
-  {
-    Image: require('../../assets/images/plane.jpg'),
+    Image: require('../../assets/images/HomeDestinations/maldives.jpg'),
     CountryName: 'Maldives',
     Cityname: 'Male',
     PurchasedInfro: 'Purchased by 30 Jan 24',
     Economy: 'USD 690*',
+  },
+  {
+    Image: require('../../assets/images/HomeDestinations/dubai.jpg'),
+    CountryName: 'United Arab Emirates',
+    Cityname: 'Dubai',
+    PurchasedInfro: 'Purchased by 30 Jan 24',
+    Economy: 'USD 444*',
   },
 ];

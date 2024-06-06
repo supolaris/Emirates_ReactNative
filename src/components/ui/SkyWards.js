@@ -17,11 +17,7 @@ const SkyWards = () => {
   };
   return (
     <View style={styles.container}>
-      <StatusBar
-        //translucent
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
+      <StatusBar backgroundColor="white" barStyle="light-content" />
 
       <View style={styles.imageView}>
         <Image

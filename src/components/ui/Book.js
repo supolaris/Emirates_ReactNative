@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Modal, StatusBar} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Modal,
+  StatusBar,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
 import {BookTopTabs} from '../../routes/BookMaterialTopTab';
 import QuaternaryButton from '../common/buttons/QuaternaryButton';
@@ -32,16 +38,18 @@ const Book = () => {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
-        <View style={styles.modalOuterView}>
-          <View style={styles.modalInnerView}>
-            <ModalRowText onPress={onPress} text="Redeem Miles" />
-            <ModalRowText onPress={onPress} text="Promotion code" />
-            <ModalRowText onPress={onPress} text="Hoels" />
-            <ModalRowText onPress={onPress} text="Car rental" />
-            <ModalRowText onPress={onPress} text="Airport transfers" />
-            <ModalRowText onPress={onPress} text="Tour & Attractions" />
+        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+          <View style={styles.modalOuterView}>
+            <View style={styles.modalInnerView}>
+              <ModalRowText onPress={onPress} text="Redeem Miles" />
+              <ModalRowText onPress={onPress} text="Promotion code" />
+              <ModalRowText onPress={onPress} text="Hoels" />
+              <ModalRowText onPress={onPress} text="Car rental" />
+              <ModalRowText onPress={onPress} text="Airport transfers" />
+              <ModalRowText onPress={onPress} text="Tour & Attractions" />
+            </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       <BookTopTabs />
