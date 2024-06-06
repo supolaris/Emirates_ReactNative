@@ -23,7 +23,7 @@ const MyTrips = () => {
 
       <View style={{flex: 3.5, justifyContent: 'center', alignItems: 'center'}}>
         <ImageBackground
-          source={require('../../assets/images/cityBackground.png')}
+          source={require('../../assets/images/city.png')}
           style={styles.backgroundImage}>
           {/* <Image
             style={styles.image}
