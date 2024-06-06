@@ -39,11 +39,15 @@ export function BottomTabs() {
       <Tab.Screen
         options={{
           headerShown: false,
-          tabBarLabel: 'Home',
-          tabBarLabelStyle: {
-            fontSize: 14,
-            color: EmiratesColors.PrimaryRed,
-          },
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 14,
+                color: focused ? EmiratesColors.PrimaryRed : 'black',
+              }}>
+              Home
+            </Text>
+          ),
           tabBarIcon: ({focused}) => (
             <HomeIcon
               name="home"
@@ -80,11 +84,15 @@ export function BottomTabs() {
               />
             </TouchableOpacity>
           ),
-          tabBarLabel: 'Book',
-          tabBarLabelStyle: {
-            fontSize: 14,
-            color: EmiratesColors.PrimaryRed,
-          },
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 14,
+                color: focused ? EmiratesColors.PrimaryRed : 'black',
+              }}>
+              Book
+            </Text>
+          ),
           tabBarIcon: ({focused}) => (
             <PlaneIcon
               name="airplane"
@@ -102,17 +110,22 @@ export function BottomTabs() {
       />
       <Tab.Screen
         options={{
-          title: 'My Trips',
+          //title: 'My Trips',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             color: EmiratesColors.Black,
             fontSize: 20,
             fontWeight: '400',
           },
-          tabBarLabelStyle: {
-            fontSize: 14,
-            color: EmiratesColors.PrimaryRed,
-          },
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 14,
+                color: focused ? EmiratesColors.PrimaryRed : 'black',
+              }}>
+              My Trips
+            </Text>
+          ),
           tabBarIcon: ({focused}) => (
             <TagIcon
               name="tag"
@@ -138,11 +151,15 @@ export function BottomTabs() {
             fontSize: 20,
             fontWeight: '400',
           },
-          tabBarLabel: 'Skywards',
-          tabBarLabelStyle: {
-            fontSize: 14,
-            color: EmiratesColors.PrimaryRed,
-          },
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 14,
+                color: focused ? EmiratesColors.PrimaryRed : 'black',
+              }}>
+              Skywards
+            </Text>
+          ),
           tabBarIcon: ({focused}) => (
             <UserIcon
               name="user-alt"
@@ -160,17 +177,22 @@ export function BottomTabs() {
       />
       <Tab.Screen
         options={{
-          title: 'More',
+          //title: 'More',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             color: EmiratesColors.Black,
             fontSize: 20,
             fontWeight: '400',
           },
-          tabBarLabelStyle: {
-            fontSize: 14,
-            color: EmiratesColors.PrimaryRed,
-          },
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 14,
+                color: focused ? EmiratesColors.PrimaryRed : 'black',
+              }}>
+              More
+            </Text>
+          ),
           tabBarIcon: ({focused}) => (
             <MoreIcon
               name="three-bars"

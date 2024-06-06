@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import {BookTopTabs} from '../../routes/BookMaterialTopTab';
-import QuaternaryButton from '../common/buttons/QuaternaryButton';
 import {EmiratesColors} from '../../assets/constants/AppColors';
 
 import ModalRowText from '../common/ModalRowText';

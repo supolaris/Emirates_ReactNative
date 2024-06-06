@@ -4,38 +4,68 @@ import OneWayScreen from '../screens/OneWayScreen';
 import MultiCityScreen from '../screens/MultiCityScreen';
 
 import {EmiratesColors} from '../assets/constants/AppColors';
+import {Text} from 'react-native';
 
 const Tab = createMaterialTopTabNavigator();
 
 export function BookTopTabs() {
   return (
     <Tab.Navigator
+      initialRouteName="OneWayScreen"
       screenOptions={{
+        swipeEnabled: true,
+        tabBarPressColor: 'transparent',
         tabBarIndicatorStyle: {
           backgroundColor: 'red',
-        },
-        tabBarLabelStyle: {
-          fontSize: 14,
-          color: EmiratesColors.PrimaryRed,
         },
       }}>
       <Tab.Screen
         options={{
-          title: 'Return',
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 16,
+                color: focused
+                  ? EmiratesColors.PrimaryRed
+                  : EmiratesColors.OrignalBlack,
+              }}>
+              Return
+            </Text>
+          ),
         }}
         name="ReturnScreen"
         component={ReturnScreen}
       />
       <Tab.Screen
         options={{
-          title: 'One way',
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 16,
+                color: focused
+                  ? EmiratesColors.PrimaryRed
+                  : EmiratesColors.OrignalBlack,
+              }}>
+              One Way
+            </Text>
+          ),
         }}
         name="OneWayScreen"
         component={OneWayScreen}
       />
       <Tab.Screen
         options={{
-          title: 'Multi-city',
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 16,
+                color: focused
+                  ? EmiratesColors.PrimaryRed
+                  : EmiratesColors.OrignalBlack,
+              }}>
+              Multi-City
+            </Text>
+          ),
         }}
         name="MultiCityScreen"
         component={MultiCityScreen}
