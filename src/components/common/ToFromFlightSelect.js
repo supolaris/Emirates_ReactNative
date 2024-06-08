@@ -127,6 +127,64 @@ const ToFromFlightSelect = props => {
 
   return (
     <View style={styles.container}>
+      {/* Date Modal */}
+      <Modal
+        visible={dateModalVisible}
+        onRequestClose={() => setDateModalVisible(false)}>
+        <View style={styles.dateModalOuterView}>
+          <View style={styles.dateModalInnerView}>
+            <View style={styles.headingView}>
+              <View style={{flexDirection: 'row'}}>
+                <View style={{flex: 1}}></View>
+                <View style={{flex: 1}}>
+                  <Text style={styles.headingText}>Travel dates</Text>
+                </View>
+                <TouchableOpacity
+                  onPress={onDateModalHandle}
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'flex-end',
+                  }}>
+                  <CrossIcon
+                    style={{paddingRight: 20}}
+                    name="x"
+                    size={25}
+                    color={EmiratesColors.PrimaryRed}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.departReturnMainView}>
+                <View style={styles.departingView}>
+                  <Text style={styles.departReturnText}>Departing</Text>
+                  <Text style={styles.selectDateText}>{selectedData}</Text>
+                </View>
+                <View style={styles.returningView}>
+                  <Text style={styles.departReturnText}>Returning</Text>
+                  <Text style={styles.selectDateText}>{selectedData}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.calanderView}>
+              <CalendarList
+                markedDates={{
+                  [selectedData]: {
+                    selected: true,
+                  },
+                }}
+                pastScrollRange={0}
+                futureScrollRange={12}
+                onDayPress={day => {
+                  setSelectedDate(day.dateString);
+                }}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
+
       {/* Passengers and class Modal */}
       <Modal
         visible={passengerModalVisible}
@@ -262,63 +320,6 @@ const ToFromFlightSelect = props => {
                   titleText="Confirm"
                 />
               </View>
-            </View>
-          </View>
-        </View>
-      </Modal>
-      {/* Date Modal */}
-      <Modal
-        visible={dateModalVisible}
-        onRequestClose={() => setDateModalVisible(false)}>
-        <View style={styles.dateModalOuterView}>
-          <View style={styles.dateModalInnerView}>
-            <View style={styles.headingView}>
-              <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1}}></View>
-                <View style={{flex: 1}}>
-                  <Text style={styles.headingText}>Travel dates</Text>
-                </View>
-                <TouchableOpacity
-                  onPress={onDateModalHandle}
-                  style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'flex-end',
-                  }}>
-                  <CrossIcon
-                    style={{paddingRight: 20}}
-                    name="x"
-                    size={25}
-                    color={EmiratesColors.PrimaryRed}
-                  />
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.departReturnMainView}>
-                <View style={styles.departingView}>
-                  <Text style={styles.departReturnText}>Departing</Text>
-                  <Text style={styles.selectDateText}>{selectedData}</Text>
-                </View>
-                <View style={styles.returningView}>
-                  <Text style={styles.departReturnText}>Returning</Text>
-                  <Text style={styles.selectDateText}>{selectedData}</Text>
-                </View>
-              </View>
-            </View>
-
-            <View style={styles.calanderView}>
-              <CalendarList
-                markedDates={{
-                  [selectedData]: {
-                    selected: true,
-                  },
-                }}
-                pastScrollRange={0}
-                futureScrollRange={12}
-                onDayPress={day => {
-                  setSelectedDate(day.dateString);
-                }}
-              />
             </View>
           </View>
         </View>
